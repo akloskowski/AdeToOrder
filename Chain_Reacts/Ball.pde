@@ -15,6 +15,8 @@ class Ball
   float gColor = random(0, 255);
   float bColor = random(0, 255);
   int state = 0;
+  
+  //updates the state of each circle
   void update()
   {
     if (state == MOVING) {
@@ -42,7 +44,10 @@ class Ball
       ellipse(x, y, rad*2, rad*2);
     }
   }
-  boolean isTouching(Ball ball) {
+  
+  //checks if the circles are touching & changes state accordingly
+  boolean isTouching(Ball ball) 
+  {
     if (this == ball) return false;
     if (ball.state == DEAD) return false;
     return sqrt(pow((x-ball.x), 2)+pow((y-ball.y), 2)) <= rad + ball.rad;
