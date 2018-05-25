@@ -1,5 +1,6 @@
 class Ball
 {
+  //variables for storing of ball properties
   final static int MOVING = 0;
   final static int GROWING = 1;
   final static int SHRINKING = 2;
@@ -17,6 +18,7 @@ class Ball
   int state = 0;
   
   //updates the state of each circle
+  //with each state having its own specified behavior
   void update()
   {
     if (state == MOVING) {
