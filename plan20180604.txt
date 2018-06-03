@@ -1,0 +1,10 @@
+Team Ade to Order -- Adrian Kloskowski, Kashf Mashrafi, Ying Xin Jiang
+APCS2 pd8 
+Hw#57 -- Changes in Latitude, Changes in Altitude
+2018-06-01
+
+1. Receive approval of project proposal. 
+2. Receive approval of UML diagram. 
+3. Receive approval of flow chart.
+4. Work out corrections in paperwork. 
+5. Start coding. 
