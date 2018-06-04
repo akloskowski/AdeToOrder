@@ -11,4 +11,9 @@ We are creating a functionla visual reperesentation of a scientific calculator u
 * Processing
 * Data collection methods
 
+### Binary Tree node
+Purpose: Storage and sorting of inpout data for later calculations.
+Algorithm: [pending]
+
+#### Example [pending]
 
