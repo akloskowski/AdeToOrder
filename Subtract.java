@@ -1,6 +1,6 @@
-public class Subtract extends Expression {
+public abstract class Subtract implements Expression {
 
-public static int getValue(int A, int B) {
+public int getValue(int A, int B) {
 return A - B;
 }
 

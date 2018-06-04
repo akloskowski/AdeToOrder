@@ -1,5 +1,7 @@
 public interface Expression {
 
-public static int getValue();
+int getValue(int A);
+
+int getValue(int A, int B);
 
 }
