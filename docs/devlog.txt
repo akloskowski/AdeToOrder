@@ -114,16 +114,16 @@ Ying Xin Jiang:
 
 2018-06-03
 --------------------------------------------------------------
-Adrian Kloskowski: 
-Md Mashrafi:  
-Ying Xin Jiang: 
+Adrian Kloskowski: UML Diagram.
+Md Mashrafi: Flow Chart. 
+Ying Xin Jiang: Plan.
 ==============================================================
 
 2018-06-04
 --------------------------------------------------------------
 Adrian Kloskowski: 
-Md Mashrafi:  
-Ying Xin Jiang: 
+Md Mashrafi:  README
+Ying Xin Jiang: Math, Expression, Subtract, Muiltply, Divide files. 
 ==============================================================
 
 2018-06-05
