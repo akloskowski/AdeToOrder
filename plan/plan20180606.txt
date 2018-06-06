@@ -1,0 +1,11 @@
+Team Ade to Order -- Adrian Kloskowski, Kashf Mashrafi, Ying Xin Jiang
+APCS2 pd8 
+Hw#58 -- Keep the Pointy End Pointing Upward 
+2018-06-06
+
+The most manual part of the code is the visual. The coordinate space for all the buttons must be an accurate representation of the scientific calculator and accurately translate what the button means to solve the expressions.
+
+We are trying to use a Binary Tree to solve the expression. Writing the correct code to order and solve the expression as needed might also take some time. 
+
+Any other code is simple work and will most likely be completed within the day. 
+
