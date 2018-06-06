@@ -1,6 +1,6 @@
 public interface Expression {
 
-int getValue(int A);
+double getValue(double A);
 
 int getValue(int A, int B);
 
