@@ -83,8 +83,14 @@ void draw() {
   if ((second() - timer) % 2 == 0) {
     PImage img = loadImage("calcSprites/cursor.png");
     if (charas.charas.size() < 16) {
+      tint(255, 126);
+      image(img, 48 + (16 + charas.cursor - charas.charas.size())*13, 44);
+      tint(255, 255);
       image(img, 46 + (16 + charas.cursor - charas.charas.size())*13, 42);
     } else {
+      tint(255, 126);
+      image(img, 48 + charas.cursor*13, 44);
+      tint(255, 255);
       image(img, 46 + charas.cursor*13, 42);
     }
   }
@@ -92,14 +98,23 @@ void draw() {
   //prints indicators
   if (charas.ledIndex > 0) {
     PImage img = loadImage("calcSprites/leftInd.png");
+    tint(255, 126);
+    image(img, 34, 44);
+    tint(255, 255);
     image(img, 33, 42);
   }
   if (charas.ledIndex + charas.ledSize < charas.charas.size()) {
     PImage img = loadImage("calcSprites/rightInd.png");
+    tint(255, 126);
+    image(img, 258, 44);
+    tint(255, 255);
     image(img, 256, 42);
   }
   if (isShift) {
     PImage img = loadImage("calcSprites/shift.png");
+    tint(255, 126);
+    image(img, 32, 31);
+    tint(255, 255);
     image(img, 30, 29);
   }
 

@@ -16,8 +16,25 @@ class CharaCollection {
     charas = new ArrayList<Chara>();
     result = new ArrayList<Chara>();
   }
-  //Expression getExpTree() {
-  //}
+  Expression getExpTree() {
+    return getExpTree(0, charas.size);
+  }
+  Expression getExpTree(int min, int max) {
+    int parenCount = 0; //for skipping through parens
+
+    //trimming begin/end parens
+    if (charas.get(min).id.equals("(") && charas.get(max-1).id.equals(")")) return getExpTree(min+1, max-1);
+
+    //search for + -
+    int opIndex = -1;
+    for (int i = min, i < max, i++) {
+      if (charas.get(i).equals("(")) parenCount++;
+      if (charas.get(i).equals("(")) parenCount--;
+      if (charas.get(i).equals("+")) opIndex = i;
+      if (charas.get(i).equals("+")) opIndex = i;
+      }
+    }
+  }
   void calcExpTree() {
     result.clear();
     double val = getExpTree().getValue();
@@ -39,47 +56,47 @@ class CharaCollection {
       result.add(new Chara(id));
     }
   }
-  void print() {
-    //print user input
-    if (charas.size() < ledSize) {
-      int offset = ledSize - charas.size();
-      for (int i = 0; i < charas.size(); i++) {
-        charas.get(i).print(x+(offset+i)*13, 42);
-      }
-    } else {
-      for (int i = 0; i < 16; i++) {
-        charas.get(i+ledIndex).print(x+(i)*13, 42);
-      }
+void print() {
+  //print user input
+  if (charas.size() < ledSize) {
+    int offset = ledSize - charas.size();
+    for (int i = 0; i < charas.size(); i++) {
+      charas.get(i).print(x+(offset+i)*13, 42);
     }
+  } else {
+    for (int i = 0; i < 16; i++) {
+      charas.get(i+ledIndex).print(x+(i)*13, 42);
+    }
+  }
 
-    //print previous result
-    if (result.size() < ledSize) {
-      int offset = ledSize - result.size();
-      for (int i = 0; i < result.size(); i++) {
-        result.get(i).print(x+(offset+i)*13, 65);
-      }
-    } else {
-      for (int i = 0; i < 16; i++) {
-        result.get(i).print(x+(i)*13, 65);
-      }
+  //print previous result
+  if (result.size() < ledSize) {
+    int offset = ledSize - result.size();
+    for (int i = 0; i < result.size(); i++) {
+      result.get(i).print(x+(offset+i)*13, 65);
+    }
+  } else {
+    for (int i = 0; i < 16; i++) {
+      result.get(i).print(x+(i)*13, 65);
     }
   }
-  void cursorLeft() {
-    if (charas.size() <= 16 && 0 == cursor) return; // if at end of bounds, do nithing
-    if (cursor + ledIndex == 0) return; //if at end of bounds, do nothing
-    if (cursor == 0) {
-      ledIndex--;
-    } else {
-      cursor--;
-    }
+}
+void cursorLeft() {
+  if (charas.size() <= 16 && 0 == cursor) return; // if at end of bounds, do nithing
+  if (cursor + ledIndex == 0) return; //if at end of bounds, do nothing
+  if (cursor == 0) {
+    ledIndex--;
+  } else {
+    cursor--;
   }
-  void cursorRight() {
-    if (charas.size() < 16 && charas.size() == cursor) return; // if at end of bounds, do nothing
-    if (cursor + ledIndex > charas.size()) return; //if at end of bounds, do nothing
-    if (cursor == 16 && ledIndex + cursor < charas.size()) {
-      ledIndex++;
-    } else if (cursor != 16) {
-      cursor++;
-    }
+}
+void cursorRight() {
+  if (charas.size() < 16 && charas.size() == cursor) return; // if at end of bounds, do nothing
+  if (cursor + ledIndex > charas.size()) return; //if at end of bounds, do nothing
+  if (cursor == 16 && ledIndex + cursor < charas.size()) {
+    ledIndex++;
+  } else if (cursor != 16) {
+    cursor++;
   }
+}
 }
