@@ -2,7 +2,7 @@
 Adrian Kloskowski, Md Mashrafi, Ying Xin Jiang
 APCS2 Pd. 8
 
-##Scientific Calculator
+## Scientific Calculator
 
 ### Description. 
 Presents to the user a fully functional scientific calculator that works 
@@ -11,7 +11,7 @@ manner you would on a regular online version of the scientific calculator.
 Upon pressing ENTER, the calculator would return your final answer or an 
 error message if there's something wrong with your input expression. 
 
-###Launch Instructions
+### Launch Instructions
 1. Clone the repository. 
 2. Find the driver file. 
 3. Press the play icon in the top left corner of the file. 
