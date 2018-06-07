@@ -8,10 +8,12 @@ Pd. 8
 /////////// Zone of Reflection \\\\\\\\\\\
 ------------------------------------------
 OBSTACLES OVERCOME: 
-
+- Graphics created.
+- Interacctive buttons created.
+- LED display of to-be-processed expression created.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 UNRESOLVED ISSUES:
-
+- Convert an array of characters to an expression tree.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 COOL STUFF LEARNED:
 
@@ -121,7 +123,7 @@ Ying Xin Jiang: Plan.
 
 2018-06-04
 --------------------------------------------------------------
-Adrian Kloskowski: 
+Adrian Kloskowski: GUI layout sketch.
 Md Mashrafi:  README
 Ying Xin Jiang: Math, Expression, Subtract, Muiltply, Divide files. 
 ==============================================================
@@ -135,14 +137,14 @@ Ying Xin Jiang:
 
 2018-06-06
 --------------------------------------------------------------
-Adrian Kloskowski: 
+Adrian Kloskowski: Graphics and layout in paint.net.
 Md Mashrafi:  
 Ying Xin Jiang: 
 ==============================================================
 
 2018-06-07
 --------------------------------------------------------------
-Adrian Kloskowski: 
+Adrian Kloskowski: GUI, Buttons, Charas, CharaCollection & cursor.
 Md Mashrafi:  
 Ying Xin Jiang: 
 ==============================================================
