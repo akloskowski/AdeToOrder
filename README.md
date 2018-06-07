@@ -2,18 +2,24 @@
 Adrian Kloskowski, Md Mashrafi, Ying Xin Jiang
 APCS2 Pd. 8
 
-## Background 
-We are creating a functionla visual reperesentation of a scientific calculator using processging. The calcualtor functionality will contain most concentional functions that the user may interact with to yeild answers to mathimatical expressions. 
+##Scientific Calculator
 
-## Code Contains [pending]
-* Binary tree node
-* Interface classes
-* Processing
-* Data collection methods
+### Description. 
+Presents to the user a fully functional scientific calculator that works 
+the same way a regular one would. You click on the buttons in the same 
+manner you would on a regular online version of the scientific calculator. 
+Upon pressing ENTER, the calculator would return your final answer or an 
+error message if there's something wrong with your input expression. 
 
-### Binary Tree
-Purpose: Storage and sorting of input data for later calculations.
-Algorithm: [pending]
+###Launch Instructions
+1. Clone the repository. 
+2. Find the driver file. 
+3. Press the play icon in the top left corner of the file. 
+4. Start inputing expressions. 
 
-#### Example [pending]
-
+### How the Code Works:
+The input expression is translated into pieces of data where it is then 
+sorted into a Binary Tree. The sorting is based on the Order of Operations
+with the operations solved first at the leaves and working up to the 
+roots. The final answer is stored in the root node where it is then presented
+to the user. 
