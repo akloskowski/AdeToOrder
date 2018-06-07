@@ -265,9 +265,10 @@ class EqualsButton extends Button {
     minY = 352;
     maxX = minX + 50;
     maxY = minY + 38;
+    appearance = 2;
   }
   void action() {
-    //charas.calcExpTree();
+    charas.calcExpTree();
   }
 }
 

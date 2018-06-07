@@ -18,10 +18,29 @@ class CharaCollection {
   }
   //Expression getExpTree() {
   //}
-  //void calcExpTree() {
-  //  result = getExpTree().getValue();
-  //}
+  void calcExpTree() {
+    result.clear();
+    double val = getExpTree().getValue();
+    //double val = -0.0000000000000093249829;
+    println(val);
+    String valString = String.valueOf(val);
+    println(valString);
+
+    //scientific notation
+    int indE = valString.indexOf("E");
+    if (indE != -1) {
+      valString = valString.substring(0, 15-valString.length()+indE) + valString.substring(indE);
+    }
+
+    for (int i = 0; i < 16 && i < valString.length(); i ++) {
+      String id = valString.substring(i, i+1);
+      if (id.equals(".")) id = "decimal";
+      if (id.equals("-")) id = "inverse";
+      result.add(new Chara(id));
+    }
+  }
   void print() {
+    //print user input
     if (charas.size() < ledSize) {
       int offset = ledSize - charas.size();
       for (int i = 0; i < charas.size(); i++) {
@@ -30,6 +49,18 @@ class CharaCollection {
     } else {
       for (int i = 0; i < 16; i++) {
         charas.get(i+ledIndex).print(x+(i)*13, 42);
+      }
+    }
+
+    //print previous result
+    if (result.size() < ledSize) {
+      int offset = ledSize - result.size();
+      for (int i = 0; i < result.size(); i++) {
+        result.get(i).print(x+(offset+i)*13, 65);
+      }
+    } else {
+      for (int i = 0; i < 16; i++) {
+        result.get(i).print(x+(i)*13, 65);
       }
     }
   }

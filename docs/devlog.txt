@@ -16,7 +16,7 @@ UNRESOLVED ISSUES:
 - Convert an array of characters to an expression tree.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 COOL STUFF LEARNED:
-
+- Doubles converted into strings are represented in scientific notation if warranted
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 MID-DEVELOPMENT DESIGN CHANGES:
 
