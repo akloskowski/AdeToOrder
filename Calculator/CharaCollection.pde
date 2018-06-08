@@ -43,25 +43,47 @@ class CharaCollection {
       if (!isIn) isDigit = false;
     }
     if (isDigit) {
-      int decimalPoints = 0;
-      int decimalIndex = -1;
+      String valStr = "";
       for (int i = min; i < max; i++) {
-        if (charas.get(i).id == "decimal") {
-          decimalPoints++;
-          decimalIndex = i;
-        };
+        if (charas.get(i).id.equals("decimal")) valStr += ".";
+        else valStr += charas.get(i).id;
       }
-      if (decimalPoints > 1) {
+      try {
+        return new Float(Double.parseDouble(valStr));
+      }
+      catch (NumberFormatException e ) {
         error = true;
         return new Float(0.0);
-      } else if (decimalPoints == 1) {
-      } else {
-        double val = 0;
-        for (int i = min; i < max; i++) {
-          val += Integer.parseInt(charas.get(i).id) * pow(10, max - i - 1);
-        }
-        return new Float(val);
       }
+      //int decimalPoints = 0;
+      //int decimalIndex = -1;
+      //for (int i = min; i < max; i++) {
+      //  if (charas.get(i).id == "decimal") {
+      //    decimalPoints++;
+      //    decimalIndex = i;
+      //  };
+      //}
+      //if (decimalPoints > 1) {
+      //  error = true;
+      //  return new Float(0.0);
+      //} else if (decimalPoints == 1) {
+      //  double val = 0;
+      //  for (int i = min; i < decimalIndex; i++) {
+      //    val += Integer.parseInt(charas.get(i).id) * pow(10, decimalIndex - i - 1);
+      //  }
+      //  for (int i = decimalIndex+1; i < max; i++) {
+      //    String formatString = "#.";
+      //    for (int j = decimalIndex+1; j < i; j++) formatString += "#";
+      //    DecimalFormat myFormatter = new DecimalFormat(formatString);
+      //    val += Integer.parseInt(charas.get(i).id) / pow(10, i-decimalIndex);
+      //  }
+      //  return new Float(val);
+      //} else {
+      //  double val = 0;
+      //  for (int i = min; i < max; i++) {
+      //    val += Integer.parseInt(charas.get(i).id) * pow(10, max - i - 1);
+      //  }
+      //  return new Float(val);
     }
 
     //trimming begin/end parens
@@ -157,6 +179,12 @@ class CharaCollection {
       return new Multiply(getExpTree(min, max-1), new Divide(new Float(PI), new Float(180.0)));
     }
 
+    if (charas.get(min).id.equals("inverse")) {
+      return new Inverse(getExpTree(min+1, max));
+    }
+    if (charas.get(min).id.equals("sqrt")) {
+      return new Sqrt(getExpTree(min+1, max));
+    }
     if (charas.get(min).id.equals("log")) {
       return new Log(getExpTree(min+1, max));
     }
@@ -176,16 +204,16 @@ class CharaCollection {
       Expression e = getExpTree(min+1, max);
       //println(new Arcsin(e).getValue());
       if (e.getValue() > 1.0 || e.getValue() < -1.0) {
-       error = true;
-       return new Float(0.0);
+        error = true;
+        return new Float(0.0);
       }
       return new Arcsin(e);
     }
     if (charas.get(min).id.equals("arccos")) {
       Expression e = getExpTree(min+1, max);
       if (e.getValue() > 1.0 || e.getValue() < -1.0) {
-       error = true;
-       return new Float(0.0);
+        error = true;
+        return new Float(0.0);
       }
       return new Arccos(e);
     }
@@ -212,7 +240,7 @@ class CharaCollection {
     //double val = -0.0000000000000093249829;
     //println(val);
     String valString = String.valueOf(ans);
-    if (valString.substring(valString.length()-2).equals(".0")) valString = valString.substring(0,valString.length()-2);
+    if (valString.substring(valString.length()-2).equals(".0")) valString = valString.substring(0, valString.length()-2);
     //println(valString);
 
     //scientific notation

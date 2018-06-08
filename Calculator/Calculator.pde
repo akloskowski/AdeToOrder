@@ -2,7 +2,7 @@ CharaCollection charas;
 ArrayList<Button> buttons;
 boolean isShift;
 final String[] CHARACTERS = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "decimal", "inverse", "sin", "cos", "tan", "arcsin", "arccos", "arctan", "times", "divide", "+", "-", "(", ")", "degree", "exp", "ln", "log", "pi", "reciprocal", "square", "sqrt", "xroot", "!"};
-final String[] NUMCHARAS = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "decimal", "inverse"};
+final String[] NUMCHARAS = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "decimal"};
 final String[] OPCHARAS = {"times", "divide", "+", "-"};
 int timer;
 
@@ -185,6 +185,10 @@ class CharacterButton extends Button {
       toID = id;
     }
     if (charas.cursor + charas.ledIndex >= charas.charas.size()) { //if at end
+      if (appearance == 2 && charas.charas.size() == 0) {
+        charas.charas.add(new Chara("ans"));
+        charas.cursorRight();
+      };
       charas.charas.add(new Chara(toID));
     } else {
       charas.charas.set(charas.cursor + charas.ledIndex, new Chara(toID));
