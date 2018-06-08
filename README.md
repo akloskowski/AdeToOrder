@@ -13,7 +13,8 @@ error message if there's something wrong with your input expression.
 
 ### Launch Instructions
 1. Clone the repository. 
-2. Find the driver file. 
+2. Connect into the Calculator directory. 
+3. Find the driver file. 
 3. Press the play icon in the top left corner of the file. 
 4. Start inputing expressions. 
 
