@@ -2,6 +2,7 @@ class CharaCollection {
   ArrayList<Chara> charas;
   ArrayList<Chara> result;
   boolean error;
+  double ans;
   int cursor;
   int ledIndex;
   int ledSize;
@@ -12,6 +13,7 @@ class CharaCollection {
     cursor = 0;
     ledIndex = 0;
     ledSize = 16;
+    ans = 0.0;
     error = false;
     x = xCor;
     y = yCor;
@@ -22,7 +24,6 @@ class CharaCollection {
     return getExpTree(0, charas.size());
   }
   Expression getExpTree(int min, int max) {
-    int parenCount = 0; //for skipping through parens
 
     //check if empty, therefore error
     if (min - max == 0) {
@@ -67,10 +68,11 @@ class CharaCollection {
     if (charas.get(min).id.equals("(") && charas.get(max-1).id.equals(")")) return getExpTree(min+1, max-1);
 
     //search for + -
+    int parenCount = 0; //for skipping through parens
     int opIndex = -1;
     for (int i = min; i < max; i++) {
       if (charas.get(i).id.equals("(")) parenCount++; //skips over sections with parentheses
-      if (charas.get(i).id.equals("(")) parenCount--; 
+      if (charas.get(i).id.equals(")")) parenCount--; 
 
       if (charas.get(i).id.equals("+") && parenCount == 0) opIndex = i;
       if (charas.get(i).id.equals("-") && parenCount == 0) opIndex = i;
@@ -79,20 +81,138 @@ class CharaCollection {
       error = true;
       return new Float(0.0);
     } 
-    println(opIndex);
+    //println(opIndex);
     if (opIndex != -1) {
       if (charas.get(opIndex).id.equals("+")) return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
       if (charas.get(opIndex).id.equals("-")) return new Subtract(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
     }
+
+    //search for * /
+    parenCount = 0;
+    opIndex = -1;
+    for (int i = min; i < max; i++) {
+      if (charas.get(i).id.equals("(")) parenCount++; //skips over sections with parentheses
+      if (charas.get(i).id.equals(")")) parenCount--; 
+
+      if (charas.get(i).id.equals("times") && parenCount == 0) opIndex = i;
+      if (charas.get(i).id.equals("divide") && parenCount == 0) opIndex = i;
+    }
+    if (parenCount != 0) { 
+      error = true;
+      return new Float(0.0);
+    } 
+    //println(opIndex);
+    if (opIndex != -1) {
+      if (charas.get(opIndex).id.equals("times")) return new Multiply(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
+      if (charas.get(opIndex).id.equals("divide")) return new Divide(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
+    }
+
+
+    //search for ^
+    parenCount = 0;
+    opIndex = -1;
+    for (int i = min; i < max; i++) {
+      if (charas.get(i).id.equals("(")) parenCount++; //skips over sections with parentheses
+      if (charas.get(i).id.equals(")")) parenCount--; 
+
+      if (charas.get(i).id.equals("exp") && parenCount == 0) opIndex = i;
+    }
+    if (parenCount != 0) {
+      error = true;
+      return new Float(0.0);
+    } 
+    //println(opIndex);
+    if (opIndex != -1) {
+      return new Power(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
+    }
+
+    //search for xroot
+    parenCount = 0;
+    opIndex = -1;
+    for (int i = min; i < max; i++) {
+      if (charas.get(i).id.equals("(")) parenCount++; //skips over sections with parentheses
+      if (charas.get(i).id.equals(")")) parenCount--; 
+
+      if (charas.get(i).id.equals("xroot") && parenCount == 0) opIndex = i;
+    }
+    if (parenCount != 0) {
+      error = true;
+      return new Float(0.0);
+    } 
+    println(opIndex);
+    if (opIndex != -1) {
+      return new Xroot(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
+    }
+
+    if (charas.get(max-1).id.equals("!")) {
+      return new Factorial(getExpTree(min, max-1));
+    }
+    if (charas.get(max-1).id.equals("square")) {
+      return new Power(getExpTree(min, max-1), new Float(2.0));
+    }
+    if (charas.get(max-1).id.equals("reciprocal")) {
+      return new Power(getExpTree(min, max-1), new Float(-1.0));
+    }
+    if (charas.get(max-1).id.equals("degree")) {
+      return new Multiply(getExpTree(min, max-1), new Divide(new Float(PI), new Float(180.0)));
+    }
+
+    if (charas.get(min).id.equals("log")) {
+      return new Log(getExpTree(min+1, max));
+    }
+    if (charas.get(min).id.equals("ln")) {
+      return new Ln(getExpTree(min+1, max));
+    }
+    if (charas.get(min).id.equals("sin")) {
+      return new Sine(getExpTree(min+1, max));
+    }
+    if (charas.get(min).id.equals("cos")) {
+      return new Cosine(getExpTree(min+1, max));
+    }
+    if (charas.get(min).id.equals("tan")) {
+      return new Tangent(getExpTree(min+1, max));
+    }
+    if (charas.get(min).id.equals("arcsin")) {
+      Expression e = getExpTree(min+1, max);
+      //println(new Arcsin(e).getValue());
+      if (e.getValue() > 1.0 || e.getValue() < -1.0) {
+       error = true;
+       return new Float(0.0);
+      }
+      return new Arcsin(e);
+    }
+    if (charas.get(min).id.equals("arccos")) {
+      Expression e = getExpTree(min+1, max);
+      if (e.getValue() > 1.0 || e.getValue() < -1.0) {
+       error = true;
+       return new Float(0.0);
+      }
+      return new Arccos(e);
+    }
+    if (charas.get(min).id.equals("arctan")) {
+      return new Arctan(getExpTree(min+1, max));
+    }
+
+    if (max - min == 1 && charas.get(min).id.equals("pi")) {
+      return new Float(PI);
+    }
+    if (max - min == 1 && charas.get(min).id.equals("ans")) {
+      return new Float(ans);
+    }
+
+
+    //in case nothing else works
+    error = true;
     return new Float(0.0);
     //return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
   }
   void calcExpTree() {
     result.clear();
-    double val = getExpTree().getValue();
+    ans = getExpTree().getValue();
     //double val = -0.0000000000000093249829;
     //println(val);
-    String valString = String.valueOf(val);
+    String valString = String.valueOf(ans);
+    if (valString.substring(valString.length()-2).equals(".0")) valString = valString.substring(0,valString.length()-2);
     //println(valString);
 
     //scientific notation

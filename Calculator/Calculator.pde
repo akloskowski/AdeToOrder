@@ -1,7 +1,7 @@
 CharaCollection charas;
 ArrayList<Button> buttons;
 boolean isShift;
-final String[] CHARACTERS = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "decimal", "inverse", "sin", "cos", "tan", "arcsin", "arccos", "arctan", "times", "divide", "+", "-", "(", ")", "degree", "exp", "ln", "log", "pi", "reciprocal", "square", "sqrt", "xroot"};
+final String[] CHARACTERS = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "decimal", "inverse", "sin", "cos", "tan", "arcsin", "arccos", "arctan", "times", "divide", "+", "-", "(", ")", "degree", "exp", "ln", "log", "pi", "reciprocal", "square", "sqrt", "xroot", "!"};
 final String[] NUMCHARAS = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "decimal", "inverse"};
 final String[] OPCHARAS = {"times", "divide", "+", "-"};
 int timer;
@@ -50,6 +50,7 @@ void setup() {
   buttons.add(new CharacterButton(")", 182, 199, 232, 223));
 
   buttons.add(new CharacterButton("square", "sqrt", 23, 234, 73, 257));
+  buttons.add(new CharacterButton("ans", 23, 267, 73, 291));
 
   buttons.add(new CharacterButton("divide", 235, 199, 285, 228));
   buttons.add(new CharacterButton("times", 235, 237, 285, 266));
@@ -265,7 +266,7 @@ class DelButton extends Button { //deletes at cursor
 class OnButton extends Button { //not really that useful; just a gag
   OnButton() {
     minX = 23;
-    minY = 335;
+    minY = 301;
     maxX = minX + 50;
     maxY = minY + 24;
   }
