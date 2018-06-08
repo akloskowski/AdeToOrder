@@ -145,7 +145,7 @@ Ying Xin Jiang: Sine, Cosine, Tangent, Arcsine, Arccos, Arctan files.
 2018-06-07
 --------------------------------------------------------------
 Adrian Kloskowski: GUI, Buttons, Charas, CharaCollection & cursor.
-Md Mashrafi:  
+Md Mashrafi: CharaTree [rescinded]
 Ying Xin Jiang: README, Math, Expression, Subtract, Mutiply, Divide, 
 Sine, Cosine, Tangent, Arcsine, Arccos, Arctan files. 
 ==============================================================
