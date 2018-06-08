@@ -1,15 +1,15 @@
-public class Subtract implements Expression {
+public class Add implements Expression {
 
 Expression A;
 Expression B;
 
-Subtract (Expression AA, Expression BB) {
+Add (Expression AA, Expression BB) {
 A = AA;
 B = BB;
 }
 
 public double getValue() {
-return A.getValue() - B.getValue();
+return A.getValue() + B.getValue();
 }
 
 }

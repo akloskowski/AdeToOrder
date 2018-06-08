@@ -242,8 +242,10 @@ class ClearButton extends Button { //clears character collection
   }
   void action() {
     charas.charas = new ArrayList<Chara>();
+    charas.result = new ArrayList<Chara>();
     charas.cursor = 0;
     charas.ledIndex = 0;
+    charas.error = false;
   }
 }
 class DelButton extends Button { //deletes at cursor
@@ -283,6 +285,7 @@ class EqualsButton extends Button {
     appearance = 2;
   }
   void action() {
+    charas.error = false;
     charas.calcExpTree();
   }
 }

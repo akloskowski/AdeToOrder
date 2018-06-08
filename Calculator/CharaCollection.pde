@@ -34,10 +34,10 @@ class CharaCollection {
 
     //check if number
     boolean isDigit = true;
-    for (Chara c : charas) {
+    for (int i = min; i < max; i++) {
       boolean isIn = false;
       for (String s : NUMCHARAS) {
-        if (s.equals(c.id)) isIn = true;
+        if (s.equals(charas.get(i).id)) isIn = true;
       }
       if (!isIn) isDigit = false;
     }
@@ -69,19 +69,20 @@ class CharaCollection {
     //search for + -
     int opIndex = -1;
     for (int i = min; i < max; i++) {
-      if (charas.get(i).equals("(")) parenCount++; //skips over sections with parentheses
-      if (charas.get(i).equals("(")) parenCount--; 
+      if (charas.get(i).id.equals("(")) parenCount++; //skips over sections with parentheses
+      if (charas.get(i).id.equals("(")) parenCount--; 
 
-      if (charas.get(i).equals("+") && parenCount == 0) opIndex = i;
-      if (charas.get(i).equals("-") && parenCount == 0) opIndex = i;
+      if (charas.get(i).id.equals("+") && parenCount == 0) opIndex = i;
+      if (charas.get(i).id.equals("-") && parenCount == 0) opIndex = i;
     }
     if (parenCount != 0) { 
       error = true;
+      return new Float(0.0);
     } 
     println(opIndex);
     if (opIndex != -1) {
-      if (charas.get(opIndex).equals("+")) return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
-      if (charas.get(opIndex).equals("+")) return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
+      if (charas.get(opIndex).id.equals("+")) return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
+      if (charas.get(opIndex).id.equals("-")) return new Subtract(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
     }
     return new Float(0.0);
     //return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
@@ -90,9 +91,9 @@ class CharaCollection {
     result.clear();
     double val = getExpTree().getValue();
     //double val = -0.0000000000000093249829;
-    println(val);
+    //println(val);
     String valString = String.valueOf(val);
-    println(valString);
+    //println(valString);
 
     //scientific notation
     int indE = valString.indexOf("E");
@@ -121,14 +122,22 @@ class CharaCollection {
     }
 
     //print previous result
-    if (result.size() < ledSize) {
-      int offset = ledSize - result.size();
-      for (int i = 0; i < result.size(); i++) {
-        result.get(i).print(x+(offset+i)*13, 65);
-      }
+    if (error) {
+      PImage img = loadImage("calcSprites/error.png");
+      tint(255, 126);
+      image(img, 203, 69);
+      tint(255, 255);
+      image(img, 201, 67);
     } else {
-      for (int i = 0; i < 16; i++) {
-        result.get(i).print(x+(i)*13, 65);
+      if (result.size() < ledSize) {
+        int offset = ledSize - result.size();
+        for (int i = 0; i < result.size(); i++) {
+          result.get(i).print(x+(offset+i)*13, 65);
+        }
+      } else {
+        for (int i = 0; i < 16; i++) {
+          result.get(i).print(x+(i)*13, 65);
+        }
       }
     }
   }
