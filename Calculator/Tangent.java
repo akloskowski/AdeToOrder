@@ -1,7 +1,13 @@
-public abstract class Tangent implements Expression {
+public class Tangent implements Expression {
 
-public double getValue(double A) {
-return Math.tan(A);
+Expression A;
+
+Tangent (Expression AA) {
+A = AA;
+}
+
+public double getValue() {
+return Math.tan(A.getValue());
 }
 
 }

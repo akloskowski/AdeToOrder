@@ -1,7 +1,13 @@
-public abstract class Arccos implements Expression {
+public class Arccos implements Expression {
 
-public double getValue(double A) {
-return Math.acos(A);
+Expression A;
+
+Arccos (Expression AA) {
+A = AA;
+}
+
+public double getValue() {
+return Math.acos(A.getValue());
 }
 
 }

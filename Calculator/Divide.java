@@ -1,7 +1,15 @@
-public abstract class Divide implements Expression {
+public class Divide implements Expression {
 
-public int getValue(int A, int B) {
-return A / B;
+Expression A;
+Expression B;
+
+Divide (Expression AA, Expression BB) {
+A = AA;
+B = BB;
+}
+
+public double getValue() {
+return A.getValue() / B.getValue();
 }
 
 }

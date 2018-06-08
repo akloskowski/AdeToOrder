@@ -1,7 +1,15 @@
-public abstract class Multiply implements Expression {
+public class Multiply implements Expression {
 
-public int getValue(int A, int B) {
-return A * B;
+Expression A;
+Expression B;
+
+Multiply (Expression AA, Expression BB) {
+A = AA;
+B = BB;
+}
+
+public double getValue() {
+return A.getValue() * B.getValue();
 }
 
 }
