@@ -97,7 +97,7 @@ Ying Xin Jiang:
 --------------------------------------------------------------
 Adrian Kloskowski: Edited Proposal.
 Md Mashrafi: Edited Proposal.
-Ying Xin Jiang: Edited Proposal. Updated Devlog. 
+Ying Xin Jiang: Edited Proposal. 
 ==============================================================
 
 2018-06-01
@@ -124,8 +124,8 @@ Ying Xin Jiang: Plan.
 2018-06-04
 --------------------------------------------------------------
 Adrian Kloskowski: GUI layout sketch.
-Md Mashrafi:  README
-Ying Xin Jiang: Math, Expression, Subtract, Muiltply, Divide files. 
+Md Mashrafi: README
+Ying Xin Jiang: Math, Expression, Subtract, Multiply, Divide files. 
 ==============================================================
 
 2018-06-05
@@ -139,19 +139,13 @@ Ying Xin Jiang:
 --------------------------------------------------------------
 Adrian Kloskowski: Graphics and layout in paint.net.
 Md Mashrafi:  
-Ying Xin Jiang: 
+Ying Xin Jiang: Sine, Cosine, Tangent, Arcsine, Arccos, Arctan files. 
 ==============================================================
 
 2018-06-07
 --------------------------------------------------------------
 Adrian Kloskowski: GUI, Buttons, Charas, CharaCollection & cursor.
 Md Mashrafi:  
-Ying Xin Jiang: 
-==============================================================
-
-2018-06-08
---------------------------------------------------------------
-Adrian Kloskowski: 
-Md Mashrafi:  
-Ying Xin Jiang: 
+Ying Xin Jiang: README, Math, Expression, Subtract, Mutiply, Divide, 
+Sine, Cosine, Tangent, Arcsine, Arccos, Arctan files. 
 ==============================================================
