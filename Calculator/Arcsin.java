@@ -1,17 +1,13 @@
-public abstract class Arcsin implements Expression {
+public class Arcsin implements Expression {
 
-private double A;
+Expression A;
 
-public Arcsin() {
-A = 0.0;
+Arcsin (Expression AA) {
+A = AA;
 }
 
-public Arcsin(double a) {
-A = a;
-}
-
-public double getValue(double A) {
-return Math.asin(A);
+public double getValue() {
+return Math.asin(A.getValue());
 }
 
 }

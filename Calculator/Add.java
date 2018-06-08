@@ -1,20 +1,15 @@
-public abstract class Add implements Expression {
+public class Add implements Expression {
 
-private int A;
-private int B;
+Expression A;
+Expression B;
 
-public Add() {
-A = 0;
-B = 0;
+Add (Expression AA, Expression BB) {
+A = AA;
+B = BB;
 }
 
-public Add(int a, int b) {
-A = a;
-B = b;
+public double getValue() {
+return A.getValue() + B.getValue();
 }
-
-public int getValue(int A, int B) {
-return A + B;
-} 
 
 }

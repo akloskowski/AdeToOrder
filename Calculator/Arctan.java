@@ -1,17 +1,13 @@
-public abstract class Arctan implements Expression {
+public class Arctan implements Expression {
 
-private double A;
+Expression A;
 
-public Arctan() {
-A = 0.0;
+Arctan (Expression AA) {
+A = AA;
 }
 
-public Arctan(double a) {
-A = a;
-}
-
-public double getValue(double A) {
-return Math.atan(A);
+public double getValue() {
+return Math.atan(A.getValue());
 }
 
 }

@@ -1,17 +1,13 @@
-public abstract class Sine implements Expression {
+public class Sine implements Expression {
 
-private double A;
+Expression A;
 
-public Sine() {
-A = 0.0;
+Sine (Expression AA) {
+A = AA;
 }
 
-public Sine(double a) {
-A = a;
-}
-
-public double getValue(double A) {
-return Math.sin(A);
+public double getValue() {
+return Math.sin(A.getValue());
 }
 
 }

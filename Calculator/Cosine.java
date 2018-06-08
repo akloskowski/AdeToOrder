@@ -1,17 +1,13 @@
-public abstract class Cosine implements Expression {
+public class Cosine implements Expression {
 
-private double A;
+Expression A;
 
-public Cosine() {
-A = 0.0;
+Cosine (Expression AA) {
+A = AA;
 }
 
-public Cosine(double a) {
-A = a;
-}
-
-public double getValue(double A) {
-return Math.cos(A);
+public double getValue() {
+return Math.cos(A.getValue());
 }
 
 }

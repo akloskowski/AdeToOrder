@@ -1,17 +1,13 @@
-public abstract class Inverse implements Expression {
+public class Inverse implements Expression {
 
-private int A;
+Expression A;
 
-public Inverse() {
-A = 0;
+Inverse (Expression AA) {
+A = AA;
 }
 
-public Inverse(int a) {
-A = a;
-}
-
-public int getValue(int A) {
-return A * -1;
+public double getValue() {
+return A.getValue() * -1;
 }
 
 }

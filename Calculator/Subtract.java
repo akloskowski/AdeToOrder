@@ -1,20 +1,15 @@
-public abstract class Subtract implements Expression {
+public class Subtract implements Expression {
 
-private int A;
-private int B;
+Expression A;
+Expression B;
 
-public Subtract() {
-A = 0;
-B = 0;
+Subtract (Expression AA, Expression BB) {
+A = AA;
+B = BB;
 }
 
-public Subtract(int a, int b) {
-A = a;
-B = b;
-}
-
-public int getValue(int A, int B) {
-return A - B;
+public double getValue() {
+return A.getValue() - B.getValue();
 }
 
 }
