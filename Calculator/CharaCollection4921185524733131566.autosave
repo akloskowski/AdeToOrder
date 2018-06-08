@@ -31,37 +31,10 @@ class CharaCollection {
     if (error) {
       return new Float(0.0);
     }
-
-    //check if number
-    boolean isDigit = true;
-    for (Chara c : charas) {
-      boolean isIn = false;
-      for (String s : NUMCHARAS) {
-        if (s.equals(c.id)) isIn = true;
-      }
-      if (!isIn) isDigit = false;
-    }
-    if (isDigit) {
-      int decimalPoints = 0;
-      int decimalIndex = -1;
-      for (int i = min; i < max; i++) {
-        if (charas.get(i).id == "decimal") {
-          decimalPoints++;
-          decimalIndex = i;
-        };
-      }
-      if (decimalPoints > 1) {
-        error = true;
-        return new Float(0.0);
-      } else if (decimalPoints == 1) {
-      } else {
-        double val = 0;
-        for (int i = min; i < max; i++) {
-          val += Integer.parseInt(charas.get(i).id) * pow(10, max - i - 1);
-        }
-        return new Float(val);
-      }
-    }
+    
+    //check if span is just a float
+    boolean isDigits = true;
+    for (Chara c : charas
 
     //trimming begin/end parens
     if (charas.get(min).id.equals("(") && charas.get(max-1).id.equals(")")) return getExpTree(min+1, max-1);
@@ -78,13 +51,11 @@ class CharaCollection {
     if (parenCount != 0) { 
       error = true;
     } 
-    println(opIndex);
     if (opIndex != -1) {
       if (charas.get(opIndex).equals("+")) return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
       if (charas.get(opIndex).equals("+")) return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
     }
-    return new Float(0.0);
-    //return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
+    return new Add(getExpTree(min, opIndex), getExpTree(opIndex+1, max));
   }
   void calcExpTree() {
     result.clear();
